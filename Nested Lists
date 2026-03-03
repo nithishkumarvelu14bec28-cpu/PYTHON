@@ -1,0 +1,23 @@
+n = int(input())
+records = []
+for _ in range(n):
+    name = input()
+    score = float(input())
+    records.append([name, score])
+records.sort(key=lambda x: (x[1], x[0]))
+lowest_score = records[0][1]
+second_lowest_score = None
+second_lowest_students = []
+for student in records:
+    if student[1] > lowest_score:
+        if second_lowest_score is None: 
+            second_lowest_score = student[1]
+            second_lowest_students.append(student[0])
+        elif student[1] == second_lowest_score: 
+            second_lowest_students.append(student[0])
+        else: 
+            break
+for name in sorted(second_lowest_students):
+    print(name)
+
+
